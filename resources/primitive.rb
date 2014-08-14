@@ -25,4 +25,4 @@ attribute :name, :kind_of => String, :name_attribute => true
 attribute :agent, :kind_of => String
 attribute :params, :default => Hash
 attribute :meta, :kind_of => Hash
-attribute :op, :kind_of => Hash
+attribute :op, :kind_of => Array

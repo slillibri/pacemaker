@@ -45,10 +45,12 @@ action :create do
 
     if new_resource.op and !(new_resource.op.empty?)
       cmd << " op"
-      new_resource.op.each do |op, attrs|
-        cmd << " #{op}"
-        attrs.each do |key, value|
-          cmd << " #{key}=\"#{value}\""
+      new_resource.op.each do |op|
+        op.each_pair do |name, values|
+          cmd << " #{name}"
+          values.each do |key, value|
+            cmd << " #{key}=\"#{value}\""
+          end          
         end
       end
     end
