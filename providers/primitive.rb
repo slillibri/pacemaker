@@ -44,17 +44,16 @@ action :create do
     end
 
     if new_resource.op and !(new_resource.op.empty?)
-      cmd << " op"
       new_resource.op.each do |op|
         op.each_pair do |name, values|
-          cmd << " #{name}"
+          cmd << " op #{name}"
           values.each do |key, value|
             cmd << " #{key}=\"#{value}\""
           end          
         end
       end
     end
-
+    Chef::Log.debug("configuring primitive #{cmd}")
     e = execute "configure primitive #{name}" do
       command cmd
     end
