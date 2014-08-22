@@ -6,7 +6,7 @@ action :create do
 
     unless resource_exists?(name)
         cmd = "crm configure rsc_default #{name}=\"#{value}\""
-        Chef::Log.debug("configuring rsc_default #{cmd}")
+        Chef::Log.debug("configuring rsc_defaults #{cmd}")
         e = execute "configure rsc_default #{name}" do
             command cmd
         end
